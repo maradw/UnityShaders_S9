@@ -1,21 +1,19 @@
-Shader "Unlit/E2"
+Shader "Prueba 1"
 {
     Properties
     {
-         _ColorA("Color", Color) = (1,0.5,0,1)
-         _ColorB("Color", Color) = (0.5,0,0.7,1)
+       _MainColor("Color", Color) = (0,1,0,1)
     }
     SubShader
     {
         Tags { "RenderType"="Opaque" }
         LOD 100
-
+        //Blend SrcAlpha OneMinusSrcAlpha // Habilita el blending para la transparencia
         Pass
         {
             CGPROGRAM
-            #pragma vertex vert
+            #pragma vertex vert 
             #pragma fragment frag
-            // make fog work
             #pragma multi_compile_fog
 
             #include "UnityCG.cginc"
@@ -33,7 +31,9 @@ Shader "Unlit/E2"
                 float4 vertex : SV_POSITION;
             };
 
-            v2f vert (appdata v)
+            fixed4 _MainColor;
+
+            v2f vert(appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
@@ -42,9 +42,7 @@ Shader "Unlit/E2"
 
             fixed4 frag(v2f i) : SV_Target
             {
-                
-               return fixed4(1,1,1,1); // sample the texture
-               
+                return _MainColor;
             }
             ENDCG
         }
