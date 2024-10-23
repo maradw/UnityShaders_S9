@@ -1,14 +1,13 @@
-Shader "Prueba2"
+Shader "Prueba5"
 {
     Properties
     {
-         _ColorA("Color", Color) = (1,0.5,0,1)
-         _ColorB("Color", Color) = (0.5,0,0.7,1)
-         _Interpolation("Interpolation", Range(0, 1)) = 0.5
+        _Text1("Texture", 2D) = "white" {}
+        _Text2("Texture", 2D) = "white" {}
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType" = "Opaque" }
         LOD 100
 
         Pass
@@ -25,29 +24,26 @@ Shader "Prueba2"
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
             };
-
             struct v2f
             {
                 float2 uv : TEXCOORD0;
-                UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
             };
-
-            fixed4 _ColorA;
-            fixed4 _ColorB;
-            float _Interpolation;
-            v2f vert (appdata v)
+            sampler2D _Text1;
+            sampler2D _Text2;
+            v2f vert(appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
+                o.uv = v.uv;
                 return o;
             }
-
             fixed4 frag(v2f i) : SV_Target
             {
-                fixed4 interpolated = lerp(_ColorA, _ColorB, _Interpolation);
-                return interpolated;
-               
+                fixed4 t1 = tex2D(_Text1, i.uv);
+                fixed4 t2 = tex2D(_Text2, i.uv);
+                fixed4 txt = t1 * t2;
+                return txt;
             }
             ENDCG
         }

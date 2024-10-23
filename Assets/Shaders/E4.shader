@@ -1,8 +1,9 @@
-Shader "Prueba3"
+Shader "Prueba4"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _MainColor("Color", Color) = (1,0,0,1)
     }
     SubShader
     {
@@ -14,7 +15,6 @@ Shader "Prueba3"
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            // make fog work
             #pragma multi_compile_fog
 
             #include "UnityCG.cginc"
@@ -28,26 +28,26 @@ Shader "Prueba3"
             struct v2f
             {
                 float2 uv : TEXCOORD0;
-                //UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
             };
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
+            fixed4 _MainColor;
 
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-               // o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-                //UNITY_TRANSFER_FOG(o,o.vertex);
+                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
-                return col;
+                fixed4 texcol = col * _MainColor;
+                return texcol;
             }
             ENDCG
         }
