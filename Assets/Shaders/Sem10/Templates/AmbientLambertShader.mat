@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: E1
-  m_Shader: {fileID: 4800000, guid: f8d516e71e608e647803e86b27804291, type: 3}
+  m_Name: AmbientLambertShader
+  m_Shader: {fileID: 4800000, guid: ad5cb6c78b9493f4f82b03c2699ca034, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -26,5 +26,6 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _MainColor: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
+    - _AmbientColor: {r: 1, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.12616038, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []
