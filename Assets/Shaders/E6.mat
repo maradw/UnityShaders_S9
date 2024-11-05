@@ -29,9 +29,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _WaveFrequency: 2
-    - _WaveSpeed: 1
-    - _WindStrength: 1
+    - _WaveFrequency: 8.12
+    - _WaveSpeed: 6.04
+    - _WindStrength: 2.29
     m_Colors:
     - _WindDirection: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

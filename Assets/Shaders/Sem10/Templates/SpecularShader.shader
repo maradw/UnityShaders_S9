@@ -35,7 +35,7 @@ Shader "Custom/SpecularShader"
             };
 
             float4 _Color;
-            float4 _CustomSpecColor; // Cambiado a _CustomSpecColor
+            float4 _CustomSpecColor;
             float4 _AmbientColor;
             float _Shininess;
 
@@ -43,32 +43,21 @@ Shader "Custom/SpecularShader"
             {
                 v2f o;
                 o.pos = UnityObjectToClipPos(v.vertex);
-
-                // Calcular la normal y la posición en el espacio mundial
-                o.worldNormal = normalize(mul((float3x3)unity_ObjectToWorld, v.normal));
+                o.worldNormal = normalize(mul((float3x3)unity_ObjectToWorld, v.normal));// Calcular la normal y la posición en el espacio mundial
                 o.worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-
-                // Dirección de la vista desde el espacio mundial
-                o.viewDir = normalize(_WorldSpaceCameraPos - o.worldPos);
-
+                o.viewDir = normalize(_WorldSpaceCameraPos - o.worldPos);// Dirección de la vista desde el espacio mundial
                 return o;
             }
-
             float4 frag (v2f i) : SV_Target
             {
-                // Color difuso
-                float3 lightDir = normalize(_WorldSpaceLightPos0.xyz);
+                float3 lightDir = normalize(_WorldSpaceLightPos0.xyz);// Color difuso
                 float NdotL = max(0, dot(i.worldNormal, lightDir));
                 float3 diffuse = _Color.rgb * _LightColor0.rgb * NdotL;
-
-                // Componente especular
-                float3 reflectDir = reflect(-lightDir, i.worldNormal);
+                float3 reflectDir = reflect(-lightDir, i.worldNormal); // Componente especular
                 float specFactor = pow(max(dot(reflectDir, i.viewDir), 0), _Shininess);
                 float3 specular = _CustomSpecColor.rgb * specFactor; // Cambiado a _CustomSpecColor
-                 // Luz ambiental
-                float3 ambient = _Color.rgb * _AmbientColor.rgb;
-                // Color final
-                float3 color = ambient + diffuse + specular;
+                float3 ambient = _Color.rgb * _AmbientColor.rgb;// Luz ambiental
+                float3 color = ambient + diffuse + specular;// Color final
                 return float4(color, _Color.a);
             }
             ENDCG

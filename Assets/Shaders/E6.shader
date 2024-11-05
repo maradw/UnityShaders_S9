@@ -3,7 +3,6 @@ Shader "Prueba6"
    Properties
     {
         _MainTex ("Flag Texture", 2D) = "white" {} 
-        _WindDirection("Wind Direction", Vector) = (1, 0, 0, 0)
         _WindStrength("Wind Strength", Float) = 1.0
         _WaveSpeed("Wave Speed", Float) = 1.0
         _WaveFrequency("Wave Frequency", Float) = 2.0
@@ -21,7 +20,6 @@ Shader "Prueba6"
          
              #include "UnityCG.cginc"
              sampler2D _MainTex;
-             float4 _WindDirection; 
              float _WindStrength;
              float _WaveSpeed;
              float _WaveFrequency;
@@ -41,7 +39,7 @@ Shader "Prueba6"
                  // Aplicar deformación senoidal
                  float wave = sin(v.vertex.x * _WaveFrequency + _Time.y * _WaveSpeed) * _WindStrength;
                  // Desplazar los vértices dirección del viento
-                 v.vertex.xyz += _WindDirection.xyz * wave;
+                 v.vertex.xyz += wave;
                  o.pos = UnityObjectToClipPos(v.vertex);
                  o.uv = v.uv;
                  return o;

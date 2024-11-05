@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FlatLightingShader
+  m_Name: FlatLightingShader 1
   m_Shader: {fileID: 4800000, guid: a70d0ddc8415d4b41871c3337a73e609, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0

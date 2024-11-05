@@ -19,16 +19,17 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties: :m_DoubleSidedGI
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e6f052b7128dd7c4c89b17226f442dc6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 873c716a78f77f548ba8c96a0001ca20, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _AmbientColor: {r: 0.2550147, g: 0.5377358, b: 0.012682447, a: 1}
+    - _AmbientColor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
+    - _Color: {r: 1, g: 0.514151, b: 0.514151, a: 1}
   m_BuildTextureStacks: []
