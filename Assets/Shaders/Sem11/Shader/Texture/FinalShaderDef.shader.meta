@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a4a154fe0a4e584448d552d60bec5c5a
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _MainTex: {instanceID: 0}
+  - _SpecularMap: {instanceID: 0}
+  - _EmissionMap: {instanceID: 0}
+  - _NormalMap: {instanceID: 0}
+  - _OcclusionMap: {instanceID: 0}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

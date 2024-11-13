@@ -61,7 +61,6 @@ Shader "Custom/NormalMapShader"
 
                 float4 frag(v2f i) : SV_Target
                 {
-                    // Obtener el color de la textura
                     float4 texColor = tex2D(_MainTex, i.uv) * _Color;
 
                     // Obtener el valor del normal map y remapearlo de [0,1] a [-1,1]

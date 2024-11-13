@@ -52,7 +52,6 @@ Shader "Custom/ParallaxHeightMapShader"
 
                     return o;
                 }
-
                 float4 frag(v2f i) : SV_Target
                 {
                     // Mapa de altura
